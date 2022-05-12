@@ -1,6 +1,8 @@
 import tempfile
 import os
 import sys
+import requests
+from pprint import pprint
 from pathlib import Path
 
 
@@ -22,7 +24,27 @@ def exec_subfinder(domain):
 
 # TODO: add crt.sh
 
+
+def exec_crtsh(domain):
+    r = requests.get(f"https://crt.sh/?q=%25.{domain}&output=json")
+    result = set()
+    for subdomain in r.json():
+        sub_strings = subdomain["common_name"].lstrip("*.")
+        result.add(sub_strings)
+
+    for subs in result:
+        os.system(f"echo {subs} >> {final_file}")
+
+
+exec_crtsh(domain)
+
 exec_subfinder(domain)
+
+allsubdomains = set()
 with open(final_file, "r") as f:
     for line in f:
-        print(line.rstrip("\n"))
+        allsubdomains.add(line.rstrip("\n"))
+
+
+for sub in allsubdomains:
+    print(sub)
