@@ -8,7 +8,7 @@ from datetime import datetime
 random_name = tempfile.NamedTemporaryFile(delete=False)
 final_file = Path(random_name.name)
 
-# TODO: add subfinder
+
 def exec_subfinder(domain):
     subfinder_out = Path(tempfile.NamedTemporaryFile(delete=False).name)
     subfinder_cmd = f"subfinder -d {domain} -silent -o {subfinder_out}"
@@ -19,9 +19,7 @@ def exec_subfinder(domain):
 
 # TODO: add findomain
 
-# TODO: add crt.sh
-
-
+# TODO: add amass
 def exec_crtsh(domain):
     r = requests.get(f"https://crt.sh/?q=%25.{domain}&output=json")
     result = set()
