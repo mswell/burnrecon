@@ -1,6 +1,7 @@
 import tempfile
 import os
 import requests
+from database import connect_db
 from pathlib import Path
 from datetime import datetime
 
@@ -44,6 +45,8 @@ def clean_results(domain):
 
 
 def run_sub_parser(target, domain):
+    db = connect_db()
+    collection = db["subdomains"]
     all_subs = clean_results(domain)
     for sub in all_subs:
         data = {
@@ -52,16 +55,9 @@ def run_sub_parser(target, domain):
             "target": target,
             "date": datetime.now(),
         }
-        print(data)
 
-
-# exec_subfinder(domain)
-
-# allsubdomains = set()
-# with open(final_file, "r") as f:
-#     for line in f:
-#         allsubdomains.add(line.rstrip("\n"))
-
-
-# for sub in allsubdomains:
-#     print(sub)
+        if collection.find_one({"subdomain": sub}):
+            print("Document already exists")
+        else:
+            collection.insert_one(data)
+            print(f"Inserted {sub}")
