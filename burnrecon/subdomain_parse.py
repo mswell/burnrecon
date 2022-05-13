@@ -61,3 +61,5 @@ def run_sub_parser(target, domain):
         else:
             collection.insert_one(data)
             print(f"Inserted {sub}")
+
+    final_file.unlink()
