@@ -8,7 +8,7 @@ Be creative! do whatever you want!
 - Import things from your .base module
 """
 import typer
-from base import subdomain_enum, list_subdomains
+from base import subdomain_enum, list_subdomains, getalive
 
 app = typer.Typer()
 
@@ -22,6 +22,11 @@ def enum(target: str, domain: str):
 def list_subs(target: str):
     for subs in list_subdomains(target):
         print(subs["subdomain"])
+
+
+@app.command()
+def alive_hosts(target: str):
+    getalive(target)
 
 
 if __name__ == "__main__":
