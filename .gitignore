@@ -292,4 +292,4 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,vim,emacs,sublimetext
 
-docker/db
+burnrecon/docker/db
