@@ -51,7 +51,6 @@ flycheck_*.el
 # network security
 /network-security.data
 
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -249,7 +248,7 @@ GitHub.sublime-settings
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
-!*.svg  # comment out if you don't need vector files
+!*.svg # comment out if you don't need vector files
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -292,3 +291,5 @@ tags
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,vim,emacs,sublimetext
+
+docker/db
