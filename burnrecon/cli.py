@@ -15,17 +15,20 @@ app = typer.Typer()
 
 @app.command()
 def enum(target: str, domain: str):
+    """Enumerate subdomains."""
     subdomain_enum(target, domain)
 
 
 @app.command()
 def list_subs(target: str):
+    """List all subdomains of a target."""
     for subs in list_subdomains(target):
         print(subs["subdomain"])
 
 
 @app.command()
 def alive_hosts(target: str):
+    """Check if subdomain is alive."""
     getalive(target)
 
 
