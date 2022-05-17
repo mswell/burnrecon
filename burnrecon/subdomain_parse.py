@@ -22,7 +22,7 @@ def exec_subfinder(domain):
 
 
 def exec_amass(domain):
-    amass_out = Path(tempfile.NamedTemporaryFile(dele=False).name)
+    amass_out = Path(tempfile.NamedTemporaryFile(delete=False).name)
     amass_cmd = f"amass enum -passive -d {domain} -o {amass_out}"
     os.system(amass_cmd)
     os.system(f"cat {amass_out} >> {final_file}")
@@ -42,6 +42,7 @@ def exec_crtsh(domain):
 def clean_results(domain):
     clean_subs = set()
     exec_subfinder(domain)
+    exec_amass(domain)
     with open(final_file, "r") as file_:
         for line in file_:
             clean_subs.add(line.rstrip("\n"))
