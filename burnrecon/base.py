@@ -1,6 +1,6 @@
-from subdomain_parse import run_sub_parser
 from database import connect_db
 from getalive import httpx_parser
+from subdomain_parse import run_sub_parser
 
 
 def subdomain_enum(target, domain):

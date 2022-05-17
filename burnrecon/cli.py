@@ -8,7 +8,7 @@ Be creative! do whatever you want!
 - Import things from your .base module
 """
 import typer
-from base import subdomain_enum, list_subdomains, getalive
+from base import getalive, list_subdomains, subdomain_enum
 
 app = typer.Typer()
 

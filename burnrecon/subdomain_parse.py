@@ -1,10 +1,10 @@
-import tempfile
 import os
+import tempfile
+from datetime import datetime
+from pathlib import Path
+
 import requests
 from database import connect_db
-from pathlib import Path
-from datetime import datetime
-
 
 random_name = tempfile.NamedTemporaryFile(delete=False)
 final_file = Path(random_name.name)
@@ -20,7 +20,15 @@ def exec_subfinder(domain):
 
 # TODO: add findomain
 
-# TODO: add amass
+
+def exec_amass(domain):
+    amass_out = Path(tempfile.NamedTemporaryFile(dele=False).name)
+    amass_cmd = f"amass enum -passive -d {domain} -o {amass_out}"
+    os.system(amass_cmd)
+    os.system(f"cat {amass_out} >> {final_file}")
+    amass_out.unlink()
+
+
 def exec_crtsh(domain):
     r = requests.get(f"https://crt.sh/?q=%25.{domain}&output=json")
     result = set()
@@ -34,8 +42,8 @@ def exec_crtsh(domain):
 def clean_results(domain):
     clean_subs = set()
     exec_subfinder(domain)
-    with open(final_file, "r") as f:
-        for line in f:
+    with open(final_file, "r") as file_:
+        for line in file_:
             clean_subs.add(line.rstrip("\n"))
 
         for subs in exec_crtsh(domain):
