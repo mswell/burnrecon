@@ -28,6 +28,7 @@ Built with ❤️ and:
 ```bash
 git clone https://github.com/mswell/burnrecon.git
 cd burnrecon
+./install_hacktools.sh
 pip3 install -r requirements.txt
 ```
 
