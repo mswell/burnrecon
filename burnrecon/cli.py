@@ -1,12 +1,3 @@
-"""CLI interface for project_name project.
-
-Be creative! do whatever you want!
-
-- Install click or typer and create a CLI app
-- Use builtin argparse
-- Start a web application
-- Import things from your .base module
-"""
 import typer
 from base import getalive, list_subdomains, subdomain_enum
 
@@ -14,20 +5,27 @@ app = typer.Typer()
 
 
 @app.command()
-def enum(target: str, domain: str):
+def enum(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target"),
+    domain: str = typer.Option(..., "--domain", "-d", help="Domain of target"),
+):
     """Enumerate subdomains."""
     subdomain_enum(target, domain)
 
 
 @app.command()
-def list_subs(target: str):
+def list_subs(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target")
+):
     """List all subdomains of a target."""
     for subs in list_subdomains(target):
         print(subs["subdomain"])
 
 
 @app.command()
-def alive_hosts(target: str):
+def alive_hosts(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target")
+):
     """Check if subdomain is alive."""
     getalive(target)
 

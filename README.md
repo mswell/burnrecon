@@ -71,54 +71,47 @@ Commands:
 Enum subdomains:
 
 ```bash
-python3 cli.py enum hackerone hackerone.com
-
+python3 cli.py enum -t hackerone -d hackerone.com
 
 python3 cli.py enum --help
-Usage: cli.py enum [OPTIONS] TARGET DOMAIN
+Usage: cli.py enum [OPTIONS]
 
   Enumerate subdomains.
 
-Arguments:
-  TARGET  [required]
-  DOMAIN  [required]
-
 Options:
-  --help  Show this message and exit.
+  -t, --target TEXT  Name of target  [required]
+  -d, --domain TEXT  Domain of target  [required]
+  --help             Show this message and exit.
 ```
 
 List subdomains:
 
 ```bash
-python3 cli.py list-subs hackerone
+python3 cli.py list-subs -t hackerone
 
 python3 cli.py list-subs --help
-Usage: cli.py list-subs [OPTIONS] TARGET
+Usage: cli.py list-subs [OPTIONS]
 
   List all subdomains of a target.
 
-Arguments:
-  TARGET  [required]
-
 Options:
-  --help  Show this message and exit.
+  -t, --target TEXT  Name of target  [required]
+  --help             Show this message and exit.
 ```
 
 Test alive hosts:
 
 ```bash
-python3 cli.py alive-hosts hackerone
+python3 cli.py alive-hosts -t hackerone
 
 python3 cli.py alive-hosts --help
-Usage: cli.py alive-hosts [OPTIONS] TARGET
+Usage: cli.py alive-hosts [OPTIONS]
 
   Check if subdomain is alive.
 
-Arguments:
-  TARGET  [required]
-
 Options:
-  --help  Show this message and exit.
+  -t, --target TEXT  Name of target  [required]
+  --help             Show this message and exit.
 ```
 
 ----
