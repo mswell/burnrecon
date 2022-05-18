@@ -65,6 +65,8 @@ Commands:
   alive-hosts  Check if subdomain is alive.
   enum         Enumerate subdomains.
   list-subs    List all subdomains of a target.
+  list-urls    List all urls of a target.
+
 
 ```
 
@@ -112,6 +114,23 @@ Usage: cli.py alive-hosts [OPTIONS]
 Options:
   -t, --target TEXT  Name of target  [required]
   --help             Show this message and exit.
+```
+
+List alive urls:
+
+```bash
+
+python3 cli.py list-urls -t hackerone
+
+python3 cli.py list-urls --help
+Usage: cli.py list-urls [OPTIONS]
+
+  List all urls of a target.
+
+Options:
+  -t, --target TEXT  Name of target  [required]
+  --help             Show this message and exit.
+
 ```
 
 ----
