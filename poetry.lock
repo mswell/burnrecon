@@ -66,6 +66,24 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "dynaconf"
+version = "3.1.8"
+description = "The dynamic configurator for your Python Project"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+all = ["redis", "ruamel.yaml", "configobj", "hvac"]
+configobj = ["configobj"]
+ini = ["configobj"]
+redis = ["redis"]
+test = ["pytest", "pytest-cov", "pytest-xdist", "pytest-mock", "flake8", "pep8-naming", "flake8-debugger", "flake8-print", "flake8-todo", "radon", "flask (>=0.12)", "django", "python-dotenv", "toml", "codecov", "redis", "hvac", "configobj"]
+toml = ["toml"]
+vault = ["hvac"]
+yaml = ["ruamel.yaml"]
+
+[[package]]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -191,7 +209,7 @@ test = ["pytest (>=2.2.3)", "flake8 (>=2.4.0)", "isort (>=4.2.2)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b462c84dd5df481fdc2a3b8b482eb26480b7b0127a860ede39657cbf6594c655"
+content-hash = "a089edd63530029295a72292574f86efd894edd0770de4f344ed5abf4a279a79"
 
 [metadata.files]
 black = [
@@ -238,6 +256,10 @@ colorama = [
 decorator = [
     {file = "decorator-5.1.1-py3-none-any.whl", hash = "sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186"},
     {file = "decorator-5.1.1.tar.gz", hash = "sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"},
+]
+dynaconf = [
+    {file = "dynaconf-3.1.8-py2.py3-none-any.whl", hash = "sha256:dea41800cf4eef488f49d3b5d1ff6305b85c3c21538f4dcfc39ab34d29606d28"},
+    {file = "dynaconf-3.1.8.tar.gz", hash = "sha256:d141a6664fca3648d2d8e84440966af9f58c4f4201ca78353a3f595a67c19ab4"},
 ]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
