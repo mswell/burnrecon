@@ -293,3 +293,5 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,vim,emacs,sublimetext
 
 burnrecon/docker/db
+
+burnrecon/.secrets.toml
