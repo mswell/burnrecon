@@ -29,16 +29,6 @@ def exec_amass(domain):
     amass_out.unlink()
 
 
-def exec_crtsh(domain):
-    r = requests.get(f"https://crt.sh/?q=%25.{domain}&output=json")
-    result = set()
-    for subdomain in r.json():
-        sub_strings = subdomain["common_name"].lstrip("*.")
-        result.add(sub_strings)
-
-    return result
-
-
 def clean_results(domain):
     clean_subs = set()
     exec_subfinder(domain)
@@ -46,9 +36,6 @@ def clean_results(domain):
     with open(final_file, "r") as file_:
         for line in file_:
             clean_subs.add(line.rstrip("\n"))
-
-        for subs in exec_crtsh(domain):
-            clean_subs.add(subs)
 
     return clean_subs
 
