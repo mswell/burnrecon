@@ -34,12 +34,31 @@ pip3 install -r requirements.txt
 
 ### **Requirement: docker and docker-compose**
 
-Use docker-compose to start your local mongoDB.
+If you use a local instance mongodb, use docker-compose to start your local mongoDB.
 
 ```bash
 cd burnrecon/docker
 docker-compose up -d
 ```
+
+# Settings
+
+You need to set your config in [settings](burnrecon/settings.toml) file.
+
+```toml
+[database]
+address = 'localhost'
+```
+
+You need to set your secrets in the [secrets](burnrecon/.secrets_example.toml) file.
+
+```toml
+MONGO_DB_USER = 'root'
+MONGO_DB_PASS = 'toor'
+DISCORD_TOKEN = ''
+```
+
+## **Please remember to mv .secrets_example.toml to .secrets.toml**
 
 ----
 
