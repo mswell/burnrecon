@@ -294,5 +294,8 @@ tags
 
 burnrecon/docker/db
 
+
+burnrecon/.secrets.toml
+=======
 # Ignore dynaconf secret files
 .secrets.*
