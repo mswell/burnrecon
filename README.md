@@ -64,7 +64,7 @@ DISCORD_TOKEN = ''
 
 # Usage
 
-to use cli run:
+## **to use cli run:**
 
 ```bash
 cd burnrecon/burnrecon
@@ -150,6 +150,21 @@ Options:
   -t, --target TEXT  Name of target  [required]
   --help             Show this message and exit.
 
+```
+
+## **To use discord bot run:**
+
+Before do the first run, you need setting up Discord developer Application.
+
+for instructions, please visit:
+
+[Discord Setup](DISCORD.md)
+
+## **Please remember to add discord token on .secrets.toml**
+
+```bash
+cd burnrecon/burnrecon
+python3 discord_bot.py
 ```
 
 ----
