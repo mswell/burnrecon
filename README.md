@@ -23,7 +23,7 @@ Built with ❤️ and:
 
 # Instalation
 
-### **Requirement: python 3.7 or higher**
+## **Requirement: python 3.7 or higher**
 
 ```bash
 git clone https://github.com/mswell/burnrecon.git
@@ -164,7 +164,7 @@ for instructions, please visit:
 
 ```bash
 cd burnrecon/burnrecon
-python3 discord_bot.py
+python3 bot_discord.py
 ```
 
 ----
