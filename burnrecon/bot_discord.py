@@ -3,8 +3,8 @@ from pathlib import Path
 
 import discord
 
-from burnrecon.base import list_subdomains, subdomain_enum
-from burnrecon.config import settings
+from base import list_subdomains, subdomain_enum
+from config import settings
 
 TOKEN = settings.DISCORD_TOKEN
 

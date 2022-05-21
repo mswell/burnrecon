@@ -1,11 +1,11 @@
 from pymongo import MongoClient
-from burnrecon.config import settings
+from config import settings
 
 
 def connect_db():
-    db_pass = settings.MONGO_DB_PASS
-    db_user = settings.MONGO_DB_USER
-    db_address = settings.database.address
+    db_pass = settings.MONGO_INITDB_ROOT_PASSWORD
+    db_user = settings.MONGO_INITDB_ROOT_USERNAME
+    db_address = settings.MONGO_DB_ADDRESS
     db_path = "/?authMechanism=DEFAULT"
     uri = f"mongodb://{db_user}:{db_pass}@{db_address}:27017{db_path}"
 
