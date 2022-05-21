@@ -1,2 +1,1 @@
-[database]
-address = 'localhost'
+MONGO_DB_ADDRESS = 'localhost'

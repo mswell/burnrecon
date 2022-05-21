@@ -37,7 +37,6 @@ pip3 install -r requirements.txt
 If you use a local instance mongodb, use docker-compose to start your local mongoDB.
 
 ```bash
-cd burnrecon/docker
 docker-compose up -d
 ```
 

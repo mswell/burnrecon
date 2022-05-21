@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mongo
+    environment:
+      DYNACONF_MONGO_INITDB_ROOT_USERNAME: 'root'
+      DYNACONF_MONGO_INITDB_ROOT_PASSWORD: 'toor'
+      DYNACONF_MONGO_DB_ADDRESS: 'mongo'
+    networks:
+      - backend
+
+
+  mongo:
+    image: mongo
+    restart: always
+    
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    networks:
+      - backend
+networks:
+  backend:
