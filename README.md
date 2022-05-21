@@ -23,6 +23,15 @@ Built with ❤️ and:
 
 # Instalation
 
+Run with docker: **recommended 🍺**
+
+```bash
+git clone https://github.com/mswell/burnrecon.git
+docker-compose up -d
+```
+
+If run without docker
+
 ## **Requirement: python 3.7 or higher**
 
 ```bash
@@ -32,15 +41,39 @@ cd burnrecon
 pip3 install -r requirements.txt
 ```
 
-### **Requirement: docker and docker-compose**
+## **Requirement: docker and docker-compose**
 
 If you use a local instance mongodb, use docker-compose to start your local mongoDB.
 
 ```bash
-docker-compose up -d
+docker-compose up -d mongo
 ```
 
 # Settings
+
+If you use docker-compose to run burnrecon, your settings for DB connection are in the file `docker-compose.yml`,
+
+```yaml
+version: '3.1'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mongo
+    environment:
+      DYNACONF_MONGO_INITDB_ROOT_USERNAME: 'root'
+      DYNACONF_MONGO_INITDB_ROOT_PASSWORD: 'toor'
+      DYNACONF_MONGO_DB_ADDRESS: 'mongo'
+    networks:
+      - backend
+```
+
+For tokens I recommended to use `.secrets.yml`.
 
 You need to set your config in [settings](burnrecon/settings.toml) file.
 
@@ -63,110 +96,9 @@ DISCORD_TOKEN = ''
 
 # Usage
 
-## **to use cli run:**
+To use local cli see [cli wiki](https://github.com/mswell/burnrecon/wiki/cli-usage)
 
-```bash
-cd burnrecon/burnrecon
-
-python3 cli.py --help
-Usage: cli.py [OPTIONS] COMMAND [ARGS]...
-
-Options:
-  --install-completion [bash|zsh|fish|powershell|pwsh]
-                                  Install completion for the specified shell.
-  --show-completion [bash|zsh|fish|powershell|pwsh]
-                                  Show completion for the specified shell, to
-                                  copy it or customize the installation.
-  --help                          Show this message and exit.
-
-Commands:
-  alive-hosts  Check if subdomain is alive.
-  enum         Enumerate subdomains.
-  list-subs    List all subdomains of a target.
-  list-urls    List all urls of a target.
-
-
-```
-
-Enum subdomains:
-
-```bash
-python3 cli.py enum -t hackerone -d hackerone.com
-
-python3 cli.py enum --help
-Usage: cli.py enum [OPTIONS]
-
-  Enumerate subdomains.
-
-Options:
-  -t, --target TEXT  Name of target  [required]
-  -d, --domain TEXT  Domain of target  [required]
-  --help             Show this message and exit.
-```
-
-List subdomains:
-
-```bash
-python3 cli.py list-subs -t hackerone
-
-python3 cli.py list-subs --help
-Usage: cli.py list-subs [OPTIONS]
-
-  List all subdomains of a target.
-
-Options:
-  -t, --target TEXT  Name of target  [required]
-  --help             Show this message and exit.
-```
-
-Test alive hosts:
-
-```bash
-python3 cli.py alive-hosts -t hackerone
-
-python3 cli.py alive-hosts --help
-Usage: cli.py alive-hosts [OPTIONS]
-
-  Check if subdomain is alive.
-
-Options:
-  -t, --target TEXT  Name of target  [required]
-  --help             Show this message and exit.
-```
-
-List alive urls:
-
-```bash
-
-python3 cli.py list-urls -t hackerone
-
-python3 cli.py list-urls --help
-Usage: cli.py list-urls [OPTIONS]
-
-  List all urls of a target.
-
-Options:
-  -t, --target TEXT  Name of target  [required]
-  --help             Show this message and exit.
-
-```
-
-## **To use discord bot run:**
-
-Before do the first run, you need setting up Discord developer Application.
-
-for instructions, please visit:
-
-[Discord Setup](DISCORD.md)
-
-## **Please remember to add discord token on .secrets.toml**
-
-```bash
-cd burnrecon/burnrecon
-python3 bot_discord.py
-```
-
-----
+To use docker see [docker wiki](https://github.com/mswell/burnrecon/wiki/Docker-usage)
 
 ## Development
 
