@@ -14,6 +14,9 @@ services:
       DYNACONF_MONGO_INITDB_ROOT_USERNAME: 'root'
       DYNACONF_MONGO_INITDB_ROOT_PASSWORD: 'toor'
       DYNACONF_MONGO_DB_ADDRESS: 'mongo'
+    volumes:
+      - "~/.config/subfinder:/root/.config/subfinder"
+      - "~/.config/amass:/root/.config/amass"
     networks:
       - backend
 
