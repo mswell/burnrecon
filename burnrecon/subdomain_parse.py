@@ -18,7 +18,7 @@ def exec_subfinder(domain):
     subfinder_out.unlink()
 
 
-# TODO: add findomain
+# TODO: add assetfinder
 
 
 def exec_amass(domain):
