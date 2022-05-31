@@ -8,6 +8,7 @@
 
 ----
 
+
 # Description
 
 **BurnRecon** is a tool to automate and organize reconnaissance operations.
@@ -20,11 +21,15 @@ Built with ❤️ and:
 - [docker-compose](https://docs.docker.com/compose/install/)
 
 ----
+# VPS Credit
+If you need a VPS and are signing up for a new Digital Ocean account, [please use my link!](https://m.do.co/c/9624063f1b18) 
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg)](https://www.digitalocean.com/?refcode=9624063f1b18&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
 
 # Instalation
 
 Run with docker: **recommended 🍺**
-
+# TODO: change docker-compose to docker compose
 ```bash
 git clone https://github.com/mswell/burnrecon.git
 docker-compose up -d
