@@ -298,5 +298,5 @@ burnrecon/.secrets.toml
 burnrecon/settings.toml
 =======
 # Ignore dynaconf secret files
-.secrets.*
+.secrets.toml
 db

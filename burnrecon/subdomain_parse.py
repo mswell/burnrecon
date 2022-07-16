@@ -3,7 +3,6 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
-import requests
 from database import connect_db
 
 random_name = tempfile.NamedTemporaryFile(delete=False)
@@ -16,9 +15,6 @@ def exec_subfinder(domain):
     os.system(subfinder_cmd)
     os.system(f"cat {subfinder_out} >> {final_file}")
     subfinder_out.unlink()
-
-
-# TODO: add assetfinder
 
 
 def exec_amass(domain):

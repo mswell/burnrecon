@@ -1,5 +1,10 @@
 import typer
-from base import getalive, list_subdomains, subdomain_enum, list_urls_from_target
+from base import (
+    getalive,
+    list_subdomains,
+    list_urls_from_target,
+    subdomain_enum,
+)
 
 app = typer.Typer()
 
@@ -14,7 +19,9 @@ def enum(
 
 
 @app.command()
-def list_subs(target: str = typer.Option(..., "--target", "-t", help="Name of target")):
+def list_subs(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target")
+):
     """List all subdomains of a target."""
     for subs in list_subdomains(target):
         print(subs["subdomain"])
@@ -29,7 +36,9 @@ def alive_hosts(
 
 
 @app.command()
-def list_urls(target: str = typer.Option(..., "--target", "-t", help="Name of target")):
+def list_urls(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target")
+):
     """List all urls of a target."""
 
     urls = list_urls_from_target(target)

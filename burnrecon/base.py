@@ -1,6 +1,6 @@
 import sys
-import validators
 
+import validators
 from database import connect_db
 from getalive import httpx_parser
 from subdomain_parse import run_sub_parser
@@ -12,7 +12,9 @@ def subdomain_enum(target, domain):
         run_sub_parser(target, domain)
     else:
         raise NameError(
-            sys.exit(f"{domain} is not a valid domain patterns, ex: example.com")
+            sys.exit(
+                f"{domain} is not a valid domain patterns, ex: example.com"
+            )
         )
 
 

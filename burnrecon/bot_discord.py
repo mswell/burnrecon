@@ -2,8 +2,12 @@ import tempfile
 from pathlib import Path
 
 import discord
-
-from base import list_subdomains, subdomain_enum, getalive, list_urls_from_target
+from base import (
+    getalive,
+    list_subdomains,
+    list_urls_from_target,
+    subdomain_enum,
+)
 from config import settings
 
 TOKEN = settings.DISCORD_TOKEN
@@ -34,7 +38,9 @@ async def on_message(message):
     elif "+list-subs" in msg:
         await message.channel.send("Listing subdomains...")
         cmd, target = msg.split()
-        subdomains_result = f"{Path(tempfile.NamedTemporaryFile(delete=False).name)}.txt"
+        subdomains_result = (
+            f"{Path(tempfile.NamedTemporaryFile(delete=False).name)}.txt"
+        )
         subs = open(subdomains_result, "w")
         subdomains = list_subdomains(target)
         for sub in subdomains:
@@ -55,7 +61,9 @@ async def on_message(message):
         await message.channel.send("Listing urls...")
         cmd, target = msg.split()
 
-        urls_result = f"{Path(tempfile.NamedTemporaryFile(delete=False).name)}.txt"
+        urls_result = (
+            f"{Path(tempfile.NamedTemporaryFile(delete=False).name)}.txt"
+        )
         urls_list = open(urls_result, "w")
         urls = list_urls_from_target(target)
         for url in urls:
@@ -65,7 +73,9 @@ async def on_message(message):
         await message.channel.send(f"Urls of {target}:- 🍺\n")
         await message.channel.send(file=discord.File(urls_result))
     elif "+help" in msg:
-        await message.channel.send("Commands: `+enum, +list-subs, +alive-hosts, +list-urls`")
+        await message.channel.send(
+            "Commands: `+enum, +list-subs, +alive-hosts, +list-urls`"
+        )
     else:
         await message.channel.send(
             "Wrong command, please sendme `+help` to see all commands"
