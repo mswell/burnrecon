@@ -4,6 +4,7 @@ from base import (
     list_subdomains,
     list_urls_from_target,
     subdomain_enum,
+    naabu_scan,
 )
 
 app = typer.Typer()
@@ -32,6 +33,7 @@ def alive_hosts(
     target: str = typer.Option(..., "--target", "-t", help="Name of target")
 ):
     """Check if subdomain is alive."""
+    naabu_scan(target)
     getalive(target)
 
 

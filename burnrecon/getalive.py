@@ -25,12 +25,12 @@ def setup_httpx(subdomain):
 
 def run_httpx(target):
     db = connect_db()
-    subs_collection = db["subdomains"]
+    subs_collection = db["hostsports"]
     query = subs_collection.find({"target": target})
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = []
         for result in query:
-            futures.append(executor.submit(setup_httpx, result["subdomain"]))
+            futures.append(executor.submit(setup_httpx, result["host"]))
 
 
 def httpx_parser(target):

@@ -37,6 +37,7 @@ def clean_results(domain):
 
 
 def run_sub_parser(target, domain):
+    # TODO: config to accept a list with domains
     db = connect_db()
     collection = db["subdomains"]
     all_subs = clean_results(domain)

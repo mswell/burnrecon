@@ -7,6 +7,7 @@ from base import (
     list_subdomains,
     list_urls_from_target,
     subdomain_enum,
+    naabu_scan
 )
 from config import settings
 
@@ -26,6 +27,7 @@ async def on_message(message):
         return
 
     msg = message.content
+    # TODO: check if send necessary params
     if "+enum" in msg:
         await message.channel.send("Enumerating subdomains...")
         cmd, target, domain = msg.split()
@@ -51,6 +53,7 @@ async def on_message(message):
     elif "+alive-hosts" in msg:
         await message.channel.send("Check if subdomain is alive...")
         cmd, target = msg.split()
+        naabu_scan(target)
         getalive(target)
 
         await message.channel.send(f"Urls of {target} added to DB")

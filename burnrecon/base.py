@@ -3,6 +3,7 @@ import sys
 import validators
 from database import connect_db
 from getalive import httpx_parser
+from naabu_parse import naabu_parser
 from subdomain_parse import run_sub_parser
 
 
@@ -25,6 +26,10 @@ def list_subdomains(target):
     return query
 
 
+def naabu_scan(target):
+    naabu_parser(target)
+
+
 def getalive(target):
     httpx_parser(target)
 
@@ -36,3 +41,5 @@ def list_urls_from_target(target):
     query = collection.find({"target": target})
 
     return query
+
+
