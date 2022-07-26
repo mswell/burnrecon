@@ -1,8 +1,9 @@
 import sys
-import validators
 
+import validators
 from database import connect_db
 from getalive import httpx_parser
+from naabu_parse import naabu_parser
 from subdomain_parse import run_sub_parser
 
 
@@ -12,7 +13,9 @@ def subdomain_enum(target, domain):
         run_sub_parser(target, domain)
     else:
         raise NameError(
-            sys.exit(f"{domain} is not a valid domain patterns, ex: example.com")
+            sys.exit(
+                f"{domain} is not a valid domain patterns, ex: example.com"
+            )
         )
 
 
@@ -21,6 +24,10 @@ def list_subdomains(target):
     collection = db["subdomains"]
     query = collection.find({"target": target})
     return query
+
+
+def naabu_scan(target):
+    naabu_parser(target)
 
 
 def getalive(target):
@@ -34,3 +41,5 @@ def list_urls_from_target(target):
     query = collection.find({"target": target})
 
     return query
+
+

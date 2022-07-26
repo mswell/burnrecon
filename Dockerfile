@@ -11,6 +11,7 @@ ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN apt update && apt install -y libpcap-dev build-essential
 
 COPY install_hacktools.sh /root
 

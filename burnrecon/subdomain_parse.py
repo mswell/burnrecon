@@ -3,7 +3,6 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
-import requests
 from database import connect_db
 
 random_name = tempfile.NamedTemporaryFile(delete=False)
@@ -16,9 +15,6 @@ def exec_subfinder(domain):
     os.system(subfinder_cmd)
     os.system(f"cat {subfinder_out} >> {final_file}")
     subfinder_out.unlink()
-
-
-# TODO: add assetfinder
 
 
 def exec_amass(domain):
@@ -41,6 +37,7 @@ def clean_results(domain):
 
 
 def run_sub_parser(target, domain):
+    # TODO: config to accept a list with domains
     db = connect_db()
     collection = db["subdomains"]
     all_subs = clean_results(domain)
