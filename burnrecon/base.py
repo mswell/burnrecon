@@ -41,5 +41,3 @@ def list_urls_from_target(target):
     query = collection.find({"target": target})
 
     return query
-
-

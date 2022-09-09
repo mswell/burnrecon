@@ -17,6 +17,7 @@ services:
     volumes:
       - "~/.config/subfinder:/root/.config/subfinder"
       - "~/.config/amass:/root/.config/amass"
+      - "./burnrecon:/root"
     networks:
       - backend
 

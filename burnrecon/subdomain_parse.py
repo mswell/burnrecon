@@ -25,10 +25,19 @@ def exec_amass(domain):
     amass_out.unlink()
 
 
+def exec_assetfinder(domain):
+    assetfinder_out = Path(tempfile.NamedTemporaryFile(delete=False).name)
+    assetfinder_cmd = f"assetfinder -subs-only {domain} > {assetfinder_out}"
+    os.system(assetfinder_cmd)
+    os.system(f"cat {assetfinder_out} >> {final_file}")
+    assetfinder_out.unlink()
+
+
 def clean_results(domain):
     clean_subs = set()
     exec_subfinder(domain)
     exec_amass(domain)
+    exec_assetfinder(domain)
     with open(final_file, "r") as file_:
         for line in file_:
             clean_subs.add(line.rstrip("\n"))

@@ -300,3 +300,4 @@ burnrecon/settings.toml
 # Ignore dynaconf secret files
 .secrets.toml
 db
+*.bash_history
