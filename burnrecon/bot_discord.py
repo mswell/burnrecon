@@ -7,7 +7,7 @@ from base import (
     list_subdomains,
     list_urls_from_target,
     subdomain_enum,
-    naabu_scan
+    naabu_scan,
 )
 from config import settings
 
