@@ -1,10 +1,10 @@
 import concurrent.futures
-import tempfile
 import os
+import tempfile
 from datetime import datetime
 from pathlib import Path
-from database import connect_db
 
+from database import connect_db
 
 random_name = tempfile.NamedTemporaryFile(delete=False)
 final_file = Path(random_name.name)

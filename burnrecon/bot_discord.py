@@ -6,8 +6,8 @@ from base import (
     getalive,
     list_subdomains,
     list_urls_from_target,
-    subdomain_enum,
     naabu_scan,
+    subdomain_enum,
 )
 from config import settings
 
