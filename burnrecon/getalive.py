@@ -50,11 +50,17 @@ def httpx_parser(target):
             else:
                 httpx_tech["webserver"] = ""
 
+            if "title" in json_data:
+                httpx_tech["title"] = json_data["title"]
+            else:
+                httpx_tech["title"] = ""
+
             data = {
                 "target": target,
                 "url": json_data["url"],
                 "status-code": json_data["status-code"],
                 "webserver": httpx_tech["webserver"],
+                "title": httpx_tech["title"],
                 "host": json_data["host"],
                 "port": json_data["port"],
                 "techs": httpx_tech["tech"],
