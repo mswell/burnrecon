@@ -14,7 +14,7 @@ def setup_naabu(subdomain):
 
     random_name = tempfile.NamedTemporaryFile(delete=False)
     naabu_out = Path(random_name.name)
-    naabu_cmd = f"naabu -host {subdomain} -top-ports 1000 -sa "
+    naabu_cmd = f"naabu -host {subdomain} -top-ports 100 -sa "
     naabu_cmd += f"-silent -o {naabu_out}"
     os.system(f"{naabu_cmd}")
     os.system(f"cat {naabu_out} | sort -u | tee -a {final_file}")
