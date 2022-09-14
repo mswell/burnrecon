@@ -7,10 +7,10 @@ from naabu_parse import naabu_parser
 from subdomain_parse import run_sub_parser
 
 
-def subdomain_enum(target, domain):
+def subdomain_enum(target, domain, bbplatform):
     valid_domain = validators.domain(domain)
     if valid_domain:
-        run_sub_parser(target, domain)
+        run_sub_parser(target, domain, bbplatform)
     else:
         raise NameError(
             sys.exit(

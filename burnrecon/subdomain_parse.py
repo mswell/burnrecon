@@ -45,7 +45,7 @@ def clean_results(domain):
     return clean_subs
 
 
-def run_sub_parser(target, domain):
+def run_sub_parser(target, domain, bbplatform=""):
     # TODO: config to accept a list with domains
     db = connect_db()
     collection = db["subdomains"]
@@ -53,6 +53,7 @@ def run_sub_parser(target, domain):
     for sub in all_subs:
         data = {
             "domain": domain,
+            "bbplatform": bbplatform,
             "subdomain": sub,
             "target": target,
             "date": datetime.now(),
