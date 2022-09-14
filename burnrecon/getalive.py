@@ -16,7 +16,7 @@ httpx_tech = {}
 def setup_httpx(subdomain):
     random_name = tempfile.NamedTemporaryFile(delete=False)
     httpx_out = Path(random_name.name)
-    httpx_cmd = f"httpx -silent -status-code -tech-detect -timeout 10 "
+    httpx_cmd = "httpx -silent -status-code -tech-detect -timeout 10 "
     httpx_cmd += f"-threads 10 -json -o {httpx_out}"
     os.system(f"echo {subdomain } | {httpx_cmd}")
     os.system(f"cat {httpx_out} >> {final_file}")
