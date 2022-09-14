@@ -2,6 +2,7 @@ version: '3.1'
 
 services:
   app:
+    container_name: burnrecon_app
     build:
       context: .
       dockerfile: Dockerfile
@@ -23,6 +24,7 @@ services:
 
 
   mongo:
+    container_name: burnrecon_mongo
     image: mongo
     restart: always
     
