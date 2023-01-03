@@ -1,4 +1,4 @@
-FROM python:3.10-slim-buster
+FROM python:3.12.0a3-slim
 
 COPY --from=golang:1.18.2-bullseye /usr/local/go/ /usr/local/go/
 
