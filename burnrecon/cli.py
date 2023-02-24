@@ -7,6 +7,7 @@ from base import (
     list_urls_from_target,
     naabu_scan,
     subdomain_enum,
+    subs_from_file,
 )
 
 app = typer.Typer()
@@ -25,9 +26,16 @@ def enum(
 
 
 @app.command()
-def list_subs(
-    target: str = typer.Option(..., "--target", "-t", help="Name of target")
+def insert_subs(
+    target: str = typer.Option(..., "--target", "-t", help="Name of target"),
+    domain: str = typer.Option(..., "--file", "-f", help="File with subdomains"),
 ):
+    """Insert subdomains from file to DB."""
+    subs_from_file(target, domain)
+
+
+@app.command()
+def list_subs(target: str = typer.Option(..., "--target", "-t", help="Name of target")):
     """List all subdomains of a target."""
     for subs in list_subdomains(target):
         print(subs["subdomain"])
@@ -43,9 +51,7 @@ def alive_hosts(
 
 
 @app.command()
-def list_urls(
-    target: str = typer.Option(..., "--target", "-t", help="Name of target")
-):
+def list_urls(target: str = typer.Option(..., "--target", "-t", help="Name of target")):
     """List all urls of a target."""
 
     urls = list_urls_from_target(target)

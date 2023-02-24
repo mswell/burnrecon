@@ -5,6 +5,7 @@ from database import connect_db
 from getalive import httpx_parser
 from naabu_parse import naabu_parser
 from subdomain_parse import run_sub_parser
+from subs_from_file_to_db import subs_from_file_parser
 
 
 def subdomain_enum(target, domain, bbplatform):
@@ -13,10 +14,12 @@ def subdomain_enum(target, domain, bbplatform):
         run_sub_parser(target, domain, bbplatform)
     else:
         raise NameError(
-            sys.exit(
-                f"{domain} is not a valid domain patterns, ex: example.com"
-            )
+            sys.exit(f"{domain} is not a valid domain patterns, ex: example.com")
         )
+
+
+def subs_from_file(target, subs_file):
+    subs_from_file_parser(target, subs_file)
 
 
 def list_subdomains(target):
